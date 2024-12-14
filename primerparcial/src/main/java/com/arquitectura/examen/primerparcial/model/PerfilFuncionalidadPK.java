@@ -7,36 +7,48 @@ import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotNull;
 
 @Embeddable
-public class FuncionalidadPK implements Serializable {
-
+public class PerfilFuncionalidadPK implements Serializable {
     @NotNull
-    @Column(name = "COD_FUNCIONALIDAD", length = 20, nullable = false)
-    private String codigoFuncionalidad;
+    @Column(name = "COD_PERFIL", length = 8, nullable = false)
+    private String codigoPerfil;
     @NotNull
-    @Column(name = "COD_MODULO", length = 20, nullable = false)
-    private String codigoModulo;
+    @Column(name = "COD_FUNCIONALIDAD", length = 4, nullable = false)
+    private Integer codigoFuncionalidad;
+    @NotNull
+    @Column(name = "COD_MODULO", length = 16, nullable = false)
+    private Integer codigoModulo;
 
-    public FuncionalidadPK() {
+    public PerfilFuncionalidadPK() {
     }
 
-    public FuncionalidadPK(@NotNull String codigoFuncionalidad, @NotNull String codigoModulo) {
+    public PerfilFuncionalidadPK(@NotNull String codigoPerfil, @NotNull Integer codigoFuncionalidad,
+            @NotNull Integer codigoModulo) {
+        this.codigoPerfil = codigoPerfil;
         this.codigoFuncionalidad = codigoFuncionalidad;
         this.codigoModulo = codigoModulo;
     }
 
-    public String getCodigoFuncionalidad() {
+    public String getCodigoPerfil() {
+        return codigoPerfil;
+    }
+
+    public void setCodigoPerfil(String codigoPerfil) {
+        this.codigoPerfil = codigoPerfil;
+    }
+
+    public Integer getCodigoFuncionalidad() {
         return codigoFuncionalidad;
     }
 
-    public void setCodigoFuncionalidad(String codigoFuncionalidad) {
+    public void setCodigoFuncionalidad(Integer codigoFuncionalidad) {
         this.codigoFuncionalidad = codigoFuncionalidad;
     }
 
-    public String getCodigoModulo() {
+    public Integer getCodigoModulo() {
         return codigoModulo;
     }
 
-    public void setCodigoModulo(String codigoModulo) {
+    public void setCodigoModulo(Integer codigoModulo) {
         this.codigoModulo = codigoModulo;
     }
 
@@ -44,6 +56,7 @@ public class FuncionalidadPK implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((codigoPerfil == null) ? 0 : codigoPerfil.hashCode());
         result = prime * result + ((codigoFuncionalidad == null) ? 0 : codigoFuncionalidad.hashCode());
         result = prime * result + ((codigoModulo == null) ? 0 : codigoModulo.hashCode());
         return result;
@@ -57,7 +70,12 @@ public class FuncionalidadPK implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        FuncionalidadPK other = (FuncionalidadPK) obj;
+        PerfilFuncionalidadPK other = (PerfilFuncionalidadPK) obj;
+        if (codigoPerfil == null) {
+            if (other.codigoPerfil != null)
+                return false;
+        } else if (!codigoPerfil.equals(other.codigoPerfil))
+            return false;
         if (codigoFuncionalidad == null) {
             if (other.codigoFuncionalidad != null)
                 return false;
@@ -73,7 +91,9 @@ public class FuncionalidadPK implements Serializable {
 
     @Override
     public String toString() {
-        return "FuncionalidadPK [codigoFuncionalidad=" + codigoFuncionalidad + ", codigoModulo=" + codigoModulo + "]";
+        return "PerfilFuncionalidadPK [codigoPerfil=" + codigoPerfil + ", codigoFuncionalidad=" + codigoFuncionalidad
+                + ", codigoModulo=" + codigoModulo + "]";
     }
 
+    
 }
