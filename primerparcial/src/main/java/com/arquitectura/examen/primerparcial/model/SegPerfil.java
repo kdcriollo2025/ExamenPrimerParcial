@@ -1,5 +1,7 @@
 package com.arquitectura.examen.primerparcial.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "SEG_PERFIL")
-public class SegPerfil {
+public class SegPerfil implements Serializable{
 
     @Id
     @Column(name = "COD_PERFIL", length = 8)
@@ -19,7 +21,6 @@ public class SegPerfil {
     @NotNull
     @Column(name = "ESTADO", length = 3, nullable = false)
     private String estado;
-
 
     public SegPerfil() {
     }

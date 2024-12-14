@@ -1,5 +1,6 @@
 package com.arquitectura.examen.primerparcial.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "SEG_USUARIO")
-public class SegUsuario {
+public class SegUsuario implements Serializable{
 
     @Id
     @Column(name = "COD_USUARIO", length = 30)
@@ -194,11 +195,5 @@ public class SegUsuario {
                 + ", numeroIntentosFaliidos=" + numeroIntentosFallidos + ", fechaUltimaSesion=" + fechaUltimaSesion
                 + ", sueldo=" + sueldo + "]";
     }
-
-    
-
-   
-
-    
 
 }
